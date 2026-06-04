@@ -552,8 +552,8 @@ Add:
 
 ## 🔗 Related Documentation
 
-- [Homelab Repository](https://github.com/wielandtech/w_homelab) - Kubernetes cluster configuration
-- [Website Repository](https://github.com/wielandtech/w_tech) - Django application source
+- [Homelab Repository](https://github.com/wielandtech-labs/w_homelab) - Kubernetes cluster configuration
+- [Website Repository](https://github.com/wielandtech-labs/w_tech) - Django application source
 - [NGINX Documentation](https://nginx.org/en/docs/)
 - [Docker Compose Documentation](https://docs.docker.com/compose/)
 - [Let's Encrypt Documentation](https://letsencrypt.org/docs/)
