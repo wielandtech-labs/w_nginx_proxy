@@ -22,6 +22,14 @@ server {
     
     # TCP proxy settings
     proxy_pass homelab_https;
+
+    # Prepend a PROXY protocol v1 header carrying the real client IP. Without
+    # it Traefik only sees the WireGuard tunnel address. Traefik must already
+    # list 10.12.12.1 in websecure proxyProtocol.trustedIPs (w_homelab
+    # clusters/prod/infrastructure/traefik/helmrelease.yaml) before this is
+    # deployed, or every HTTPS handshake fails. To roll back, remove this line
+    # here first, then the Traefik setting.
+    proxy_protocol on;
     proxy_connect_timeout 5s;
     proxy_timeout 300s;  # 5 minutes for long-lived connections
     
