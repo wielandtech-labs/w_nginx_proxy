@@ -14,6 +14,7 @@ Internet → VPS (NGINX) → Homelab Router → Traefik LoadBalancer → Website
   - `/.well-known/acme-challenge/` → Forwarded to homelab for Let's Encrypt verification
   - Everything else → Redirected to HTTPS
 - **HTTPS (Port 443)**: TCP/TLS passthrough directly to homelab (encrypted end-to-end)
+- **Client IPs**: the 443 stream prepends a PROXY protocol header, and Traefik trusts it only from the tunnel source (`10.12.12.1`). Apps then see the real visitor IP as the rightmost `X-Forwarded-For` entry. **Deploy order matters:** Traefik must accept PROXY before this proxy sends it (otherwise every TLS handshake fails). To roll back, drop `proxy_protocol on;` here first.
 - **TLS Certificates**: Managed by cert-manager in homelab cluster with Let's Encrypt
 - **Private Keys**: Stay secure in homelab, never touch the VPS
 
