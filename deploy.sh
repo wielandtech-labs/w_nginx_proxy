@@ -64,7 +64,7 @@ validate_config() {
     log "Validating NGINX configuration..."
     
     # Test NGINX configuration syntax
-    if docker run --rm -v "$SCRIPT_DIR/nginx:/etc/nginx:ro" nginx:alpine nginx -t; then
+    if docker run --rm -v "$SCRIPT_DIR/nginx:/etc/nginx:ro" nginx:1.31.9-alpine nginx -t; then
         success "NGINX configuration is valid"
     else
         error "NGINX configuration has errors. Please fix them before deploying."
